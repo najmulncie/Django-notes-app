@@ -88,7 +88,6 @@ WSGI_APPLICATION = 'notesapp.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': os.getenv("DB_NAME"),
@@ -98,6 +97,7 @@ DATABASES = {
         'PORT': os.getenv("DB_PORT"),
     }
 }
+ 
 
 
 # Password validation
