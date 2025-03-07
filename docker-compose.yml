@@ -21,8 +21,12 @@ services:
     ports:
       - "8000:8000"
     command: sh -c "python manage.py migrate --noinput && gunicorn notesapp.wsgi --bind 0.0.0.0:8000"
-    env_file:
-      - ".env"
+    environment:
+      - DB_NAME=test_db
+      - DB_USER=root
+      - DB_PASSWORD=root
+      - DB_HOST=db
+      - DB_PORT=3306
     depends_on:
       - db
     restart: always
@@ -41,6 +45,8 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=test_db
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=root
     volumes:
       - ./data/mysql/db:/var/lib/mysql
     healthcheck:
